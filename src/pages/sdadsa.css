@@ -1,0 +1,22 @@
+/* Specific styles for the left-to-right marquee */
+.tech-stack-container.reverse-direction {
+    direction: rtl; /* Changes container direction */
+  }
+  
+  .tech-stack-items.reverse-direction {
+    direction: ltr; /* Keeps content direction normal */
+    /* Starting position - off-screen left */
+    transform: translateX(-100%);
+  }
+  .tech-stack-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 12px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+  }
+  

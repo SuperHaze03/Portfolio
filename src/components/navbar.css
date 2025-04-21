@@ -1,0 +1,113 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  padding: 0.8rem 2rem;
+}
+
+.navbar-container {
+  margin-top: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 50px;
+  /* Efek Neon */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Glow awal */
+  animation: neon-border 2s infinite alternate; /* Animasi berkedip */
+}
+
+@keyframes neon-border {
+  to {
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Glow lebih kuat */
+  }
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.logo a {
+  color: white;
+  text-decoration: none;
+  font-family: 'Cursive', sans-serif;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #f0f0f0;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+      padding: 1rem;
+  }
+
+  .navbar.scrolled {
+      padding: 0.8rem 1rem;
+  }
+
+  .nav-links {
+      gap: 1.5rem;
+  }
+
+  .nav-links li a {
+      font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+      font-size: 1.5rem;
+  }
+
+  .nav-links {
+      gap: 1rem;
+  }
+
+  .nav-links li a {
+      font-size: 0.8rem;
+  }
+}
