@@ -10,10 +10,9 @@ import Contact from './pages/Contact';
 import './style.css';  // Impor file CSS
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-
 function App() {
   return (
-    <Router>
+    <Router basename="/Portfolio"> {/* Menambahkan basename untuk subfolder */}
       <div>
         <Navbar />
         <Routes>
@@ -22,7 +21,6 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
-
       </div>
     </Router>
   );
