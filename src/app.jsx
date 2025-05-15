@@ -1,18 +1,17 @@
-import React from 'react'; // Pastikan React diimpor
+import React from 'react'; 
 import Navbar from './components/navbar';
-import Home from './pages/Home';
 import About from './pages/about';
-import Hero from "./components/Hero";
 import Projects from "./components/Projects";
-import Footer from "./components/Footer";
-
 import Contact from './pages/Contact';
-import './style.css';  // Impor file CSS
+import './style.css';  
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
+  // Memeriksa jika aplikasi berjalan di localhost atau GitHub Pages
+  const basename = window.location.hostname === 'localhost' ? '' : '/portfolio';
+
   return (
-    <Router basename="/Portfolio"> {/* Menambahkan basename untuk subfolder */}
+    <Router basename={basename}>  {/* Menetapkan basename secara dinamis */}
       <div>
         <Navbar />
         <Routes>

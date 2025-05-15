@@ -18,7 +18,7 @@
     "tailwindcss": "^4.1.1",
     "vite": "^6.2.0"
   },
-  "homepage": "http://superhaze03.github.io/Portfolio/",
+  "homepage": "https://github.com/SuperHaze03/Portfolio",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@react-three/drei": "^10.0.5",
