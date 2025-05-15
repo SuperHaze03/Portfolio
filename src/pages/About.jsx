@@ -757,6 +757,7 @@ With a passion for learning and exploring new technologies, I am determined to b
             </motion.section>
 
             <motion.section 
+          
       ref={ref}
       className="contact-section"
       id="contact"
@@ -941,7 +942,7 @@ With a passion for learning and exploring new technologies, I am determined to b
           </motion.div>
           
           <motion.div 
-            className="contact-form-wrapper" 
+            className="contact-form-wrapper w-full max-w-md h-auto"
             variants={itemVariants}
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -1109,5 +1110,7 @@ With a passion for learning and exploring new technologies, I am determined to b
         </>
     );
 };
+
+
 
 export default About;
