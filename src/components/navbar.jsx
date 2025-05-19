@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -25,14 +25,13 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <div className="logo">
-          <Link to="/">YUI</Link>
+          <HashLink smooth to="/">YUI</HashLink>
         </div>
         
         <ul className="nav-links">
-        <li><a href="#about">Home</a></li>
-          <li><a href="#about">About Me</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#contact">contact</a></li>
+          <li><HashLink smooth to="/#about">About Me</HashLink></li>
+          <li><HashLink smooth to="/#portfolio">Portfolio</HashLink></li>
+          <li><HashLink smooth to="/#contact">Contact</HashLink></li>
         </ul>
       </div>
     </nav>

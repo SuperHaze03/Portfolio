@@ -70,7 +70,7 @@ const About = () => {
             description: "Sistem manajemen inventaris gudang berbasis web dengan fitur scan barcode untuk memudahkan pencatatan barang masuk dan keluar. Dibangun dengan React, Node.js, dan MySQL untuk memastikan kinerja optimal dan keandalan data.",
             techStack: ["Laravel", "MySQL", "Bootstrap"],
             features: ["Scan Barcode", "Laporan Real-time", "Notifikasi Stok Minimum", "Ekspor Data Excel"],
-            image: "/project/inventory.png",
+            image: "/Portfolio/project/inventory.png",
             demoLink: "#",
             githubLink: "https://github.com/SuperHaze03/inventoryScan"
         },
@@ -80,7 +80,7 @@ const About = () => {
             description: "Sebuah pengalaman kopi yang revolusioner dengan desain yang modern, interaktif, dan visual yang memukau.",
             techStack: ["Vue.js", "PHP", "Laravel", "MySQL", "Tailwind CSS"],
             features: ["Mode Offline", "Multiple Payment Methods", "User Management", "Contact"],
-            image: "/project/kopi.png",
+            image: "/Portfolio/project/kopi.png",
             demoLink: "#",
             githubLink: "https://github.com/SuperHaze03/weatherApp"
         },
@@ -90,7 +90,7 @@ const About = () => {
             description: "Platform aplikasi berbasis website galery foto atau Instagram dengan memiliki berbagai fitur menarik yang dapat digunakan untuk keseharian.",
             techStack: ["Laravel", "Sqlite", "Dbeaver", "Tailwind CSS"],
             features: ["Upload Image", "Add Friend", "Post image", "likes post"],
-            image: "/project/galery.png",
+            image: "/Portfolio/project/galery.png",
             demoLink: "#",
             githubLink: "#"
         },
@@ -100,7 +100,7 @@ const About = () => {
             description: "Aplikasi library yang sangat interaktif serta menarik yang memiliki berbagai fitur canggih seperti peminjaman dan pengembalian buku yang mudah, melihat daftar buku paling banyak dipinjam, serta adanya kurfanya yang memudahkan pengguna dalam mencari buku favorit mereka.",
             techStack: ["Laravel", "JavaScript", "MySQL", "BootstrapCSS"],
             features: ["Interaktif Website", "Data Books", "Analisys Favorite Book", "Rent Books"],
-            image: "/project/library.png",
+            image: "/Portfolio/project/library.png",
             demoLink: "#",
             githubLink: "#"
         },
@@ -110,7 +110,7 @@ const About = () => {
             description: "Sebuah design website otomotif yang memberikan informasi sekedar otomotif yang sedang ramai dibicarakan oleh banyak orang.",
             techStack: ["HTML", "CSS", "Bootstrap", "MySQL"],
             features: ["Interactive Quizzes", "Progress Tracking", "Video Lectures", "Discussion Forums"],
-            image: "/project/kabaroto.png",
+            image: "/Portfolio/project/kabaroto.png",
             demoLink: "#",
             githubLink: "#"
         },
@@ -120,7 +120,7 @@ const About = () => {
             description: "Aplikasi prakiraan cuaca real-time dengan visualisasi data yang menarik dan notifikasi perubahan cuaca ekstrem. Terintegrasi dengan API cuaca terkemuka untuk akurasi data yang tinggi.",
             techStack: ["ReactJS", "OpenWeatherAPI", "CSS Animation"],
             features: ["7-Day Forecast", "Location Detection", "Weather Alerts", "Historical Data"],
-            image: "/project/gisApp.png",
+            image: "/Portfolio/project/gisApp.png",
             demoLink: "#",
             githubLink: "#"
         }
@@ -132,10 +132,10 @@ const About = () => {
         phone: "+62896-3192-4352",
         location: "Banten, Tanggerang Selatan, Pamulang",
         socialMedia: [
-            { name: "LinkedIn", url: "https://www.linkedin.com/feed/?trk=guest_homepage-basic_google-one-tap-submit", icon: "/icon/linkin.png" },
-            { name: "GitHub", url: "https://github.com/SuperHaze03", icon: "/icon/git.png" },
-            { name: "Twitter", url: "https://twitter.com", icon: "/icon/x.png" },
-            { name: "Instagram", url: "https://www.instagram.com/glenzly_/", icon: "/icon/ig.png" }
+            { name: "LinkedIn", url: "https://www.linkedin.com/feed/?trk=guest_homepage-basic_google-one-tap-submit", icon: "/Portfolio/icon/linkin.png" },
+            { name: "GitHub", url: "https://github.com/SuperHaze03", icon: "/Portfolio/icon/git.png" },
+            { name: "Twitter", url: "https://twitter.com", icon: "/Portfolio/icon/x.png" },
+            { name: "Instagram", url: "https://www.instagram.com/glenzly_/", icon: "/Portfolio/icon/ig.png" }
         ]
     };
 
@@ -415,7 +415,7 @@ const About = () => {
                             >
                                 <div className="profile-bg"></div>
                                 <motion.img 
-                                    src="/me.jpeg" 
+                                    src="/Portfolio/me.jpeg" 
                                     alt="Glendly Raynaldy Kuma'at" 
                                     className="profile-image"
                                     initial={{ filter: "grayscale(100%)" }}
