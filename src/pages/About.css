@@ -8,6 +8,8 @@ html {
   background-color: #2C2C2C;
   color: white;
   padding: 4rem 1rem;
+   position: relative;
+    overflow: hidden;
 }
 
 .about-container {

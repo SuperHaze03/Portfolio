@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
+import Background from "../components/background";
 import { useInView } from 'react-intersection-observer';
 import emailjs from '@emailjs/browser';
-
 import './About.css';
 
 const About = () => {
@@ -23,7 +23,9 @@ const About = () => {
     const reverseStartTime = useRef(null);
     const pauseTime = useRef(0);
     const reversePauseTime = useRef(0);
+    const [scrollRatio, setScrollRatio] = useState(0);
 
+  
 
 
     const [ref, inView] = useInView({
@@ -46,14 +48,35 @@ const About = () => {
       error: false,
       message: ''
     });
-    
+    const interpolateColor = (ratio) => {
+      const r = Math.round(255 * (1 - ratio)); // merah → biru
+      const g = 0;
+      const b = Math.round(255 * ratio);
+      return `rgb(${r},${g},${b})`;
+    };
     const controls = useAnimation();
     
     useEffect(() => {
-        if (inView) {
-            controls.start('visible');
-        }
+      const onScroll = () => {
+        if (!ref.current) return;
+    
+        const rect = ref.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        let ratio = 1 - Math.min(Math.max(rect.top / windowHeight, 0), 1);
+        setScrollRatio(ratio);
+      };
+    
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll(); // hitung awal
+    
+      // Tambahan: animasi masuk
+      if (inView) {
+        controls.start("visible");
+      }
+    
+      return () => window.removeEventListener("scroll", onScroll);
     }, [controls, inView]);
+    
 
     // Skill data
     const skills = [
@@ -415,7 +438,7 @@ const About = () => {
                             >
                                 <div className="profile-bg"></div>
                                 <motion.img 
-                                    src="/Portfolio/me.jpeg" 
+                                    src="me.jpeg" 
                                     alt="Glendly Raynaldy Kuma'at" 
                                     className="profile-image"
                                     initial={{ filter: "grayscale(100%)" }}
@@ -427,6 +450,7 @@ const About = () => {
                         <motion.div 
                             className={`about-text ${isVisibleAbout ? 'visible' : ''}`}
                             variants={childVariants}
+                            ref={ref} style={{ color: interpolateColor(scrollRatio) }}
                         >
                             <motion.h3 
                                 className="about-subtitle-small"
@@ -449,6 +473,7 @@ const About = () => {
                                 initial={{ y: 20, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: 0.6, duration: 0.5 }}
+                                
                             >
                               I am a Junior Web Developer with a passion for building web applications. With a foundational understanding of both frontend and backend development, I am continuously learning and honing my skills to become a Full-Stack Developer. I believe that the combination of appealing design, solid business logic, and optimal system performance is the key to creating an exceptional user experience.
                             </motion.p>
@@ -508,11 +533,15 @@ With a passion for learning and exploring new technologies, I am determined to b
                                                     </motion.div>
                                                 )}
                                             </AnimatePresence>
+                                            
                                         </motion.div>
                                     ))}
                                 </div>
+                               
                             </motion.div>
+                           
                         </motion.div>
+                        <Background />  
                     </div>
                     <motion.div 
                         className="tech-stack-container"

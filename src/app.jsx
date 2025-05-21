@@ -3,6 +3,7 @@ import Navbar from './components/navbar';
 import About from './pages/about';
 import Projects from "./components/Projects";
 import Contact from './pages/Contact';
+
 import './style.css';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
