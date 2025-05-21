@@ -5,15 +5,11 @@ import Projects from "./components/Projects";
 import Contact from './pages/Contact';
 
 import './style.css';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
-  // Memeriksa jika aplikasi berjalan di localhost atau GitHub Pages
-  const basename = window.location.hostname === 'localhost' ? '' : '/portfolio';
-
   return (
-<Router basename="/">
-
+    <HashRouter>
       <div>
         <Navbar />
         <Routes>
@@ -23,7 +19,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
-    </Router>
+    </HashRouter>
   );
 }
 
