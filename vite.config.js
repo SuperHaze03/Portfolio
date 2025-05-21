@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/portfolio/', // Pastikan ada '/' di akhir
+  base: '/', // Pastikan ada '/' di akhir
 });
