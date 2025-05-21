@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
-import Background from "../components/background";
+import Background from "../components/Background";
 import { useInView } from 'react-intersection-observer';
 import emailjs from '@emailjs/browser';
 import './About.css';
