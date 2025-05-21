@@ -2,8 +2,7 @@ import React from 'react';
 import { HashRouter } from 'react-router-dom';
 import Navbar from './components/navbar';
 import About from './pages/About';
-import Projects from "./components/Projects";
-import Contact from './pages/Contact';
+
 
 import './style.css';
 
@@ -13,8 +12,7 @@ function App() {
       <Navbar />
       <main>
         <section id="about"><About /></section>
-        <section id="portfolio"><Projects /></section>
-        <section id="contact"><Contact /></section>
+
       </main>
     </HashRouter>
   );
