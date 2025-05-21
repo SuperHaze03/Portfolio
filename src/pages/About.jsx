@@ -1,14 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
-<<<<<<< HEAD
 import Background from "../components/background";
 import { useInView } from 'react-intersection-observer';
 import emailjs from '@emailjs/browser';
-=======
-import { useInView } from 'react-intersection-observer';
-import emailjs from '@emailjs/browser';
-
->>>>>>> 12ead7e765aebaa0996dd3f08b4bb317d1060e61
 import './About.css';
 
 const About = () => {
@@ -29,13 +23,9 @@ const About = () => {
     const reverseStartTime = useRef(null);
     const pauseTime = useRef(0);
     const reversePauseTime = useRef(0);
-<<<<<<< HEAD
     const [scrollRatio, setScrollRatio] = useState(0);
 
   
-=======
-
->>>>>>> 12ead7e765aebaa0996dd3f08b4bb317d1060e61
 
 
     const [ref, inView] = useInView({
@@ -58,7 +48,6 @@ const About = () => {
       error: false,
       message: ''
     });
-<<<<<<< HEAD
     const interpolateColor = (ratio) => {
       const r = Math.round(255 * (1 - ratio)); // merah → biru
       const g = 0;
@@ -88,16 +77,6 @@ const About = () => {
       return () => window.removeEventListener("scroll", onScroll);
     }, [controls, inView]);
     
-=======
-    
-    const controls = useAnimation();
-    
-    useEffect(() => {
-        if (inView) {
-            controls.start('visible');
-        }
-    }, [controls, inView]);
->>>>>>> 12ead7e765aebaa0996dd3f08b4bb317d1060e61
 
     // Skill data
     const skills = [
@@ -459,11 +438,7 @@ const About = () => {
                             >
                                 <div className="profile-bg"></div>
                                 <motion.img 
-<<<<<<< HEAD
                                     src="me.jpeg" 
-=======
-                                    src="/Portfolio/me.jpeg" 
->>>>>>> 12ead7e765aebaa0996dd3f08b4bb317d1060e61
                                     alt="Glendly Raynaldy Kuma'at" 
                                     className="profile-image"
                                     initial={{ filter: "grayscale(100%)" }}
@@ -475,10 +450,7 @@ const About = () => {
                         <motion.div 
                             className={`about-text ${isVisibleAbout ? 'visible' : ''}`}
                             variants={childVariants}
-<<<<<<< HEAD
                             ref={ref} style={{ color: interpolateColor(scrollRatio) }}
-=======
->>>>>>> 12ead7e765aebaa0996dd3f08b4bb317d1060e61
                         >
                             <motion.h3 
                                 className="about-subtitle-small"
@@ -501,10 +473,7 @@ const About = () => {
                                 initial={{ y: 20, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: 0.6, duration: 0.5 }}
-<<<<<<< HEAD
                                 
-=======
->>>>>>> 12ead7e765aebaa0996dd3f08b4bb317d1060e61
                             >
                               I am a Junior Web Developer with a passion for building web applications. With a foundational understanding of both frontend and backend development, I am continuously learning and honing my skills to become a Full-Stack Developer. I believe that the combination of appealing design, solid business logic, and optimal system performance is the key to creating an exceptional user experience.
                             </motion.p>
@@ -564,7 +533,6 @@ With a passion for learning and exploring new technologies, I am determined to b
                                                     </motion.div>
                                                 )}
                                             </AnimatePresence>
-<<<<<<< HEAD
                                             
                                         </motion.div>
                                     ))}
@@ -574,13 +542,6 @@ With a passion for learning and exploring new technologies, I am determined to b
                            
                         </motion.div>
                         <Background />  
-=======
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </motion.div>
-                        </motion.div>
->>>>>>> 12ead7e765aebaa0996dd3f08b4bb317d1060e61
                     </div>
                     <motion.div 
                         className="tech-stack-container"
