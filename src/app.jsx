@@ -5,11 +5,11 @@ import Projects from "./components/Projects";
 import Contact from './pages/Contact';
 
 import './style.css';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <HashRouter>
+    <Router>
       <div>
         <Navbar />
         <Routes>
@@ -19,8 +19,9 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
-    </HashRouter>
+    </Router>
   );
 }
+
 
 export default App;
