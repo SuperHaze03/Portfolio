@@ -12,7 +12,8 @@ function App() {
   const basename = window.location.hostname === 'localhost' ? '' : '/portfolio';
 
   return (
-    <Router basename={basename}>  {/* Menetapkan basename secara dinamis */}
+<Router basename="/">
+
       <div>
         <Navbar />
         <Routes>
