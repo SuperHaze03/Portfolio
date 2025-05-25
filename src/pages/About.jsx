@@ -26,6 +26,43 @@ const About = () => {
     const [scrollRatio, setScrollRatio] = useState(0);
 
   
+// Filter categories
+const categories = [
+  { id: 'all', name: 'All Projects', icon: '🌟' },
+  { id: 'utility', name: 'Utility Apps', icon: '⚙️' },
+  { id: 'ecommerce', name: 'E-Commerce', icon: '🛒' },
+  { id: 'social', name: 'Social Apps', icon: '👥' }
+];
+    const useScrollAnimation = () => {
+      const [visibleItems, setVisibleItems] = useState(new Set());
+      const itemRefs = useRef([]);
+  
+      useEffect(() => {
+          const observer = new IntersectionObserver(
+              (entries) => {
+                  entries.forEach((entry) => {
+                      if (entry.isIntersecting) {
+                          const index = parseInt(entry.target.dataset.index);
+                          setVisibleItems(prev => new Set([...prev, index]));
+                      }
+                  });
+              },
+              { 
+                  threshold: 0.2,
+                  rootMargin: '50px'
+              }
+          );
+  
+          itemRefs.current.forEach((ref) => {
+              if (ref) observer.observe(ref);
+          });
+  
+          return () => observer.disconnect();
+      }, []);
+  
+      return { visibleItems, itemRefs };
+  };
+  
 
 
     const [ref, inView] = useInView({
@@ -168,7 +205,7 @@ const About = () => {
             ([entry]) => {
                 setIsVisibleAbout(entry.isIntersecting);
             },
-            { threshold: 0.45 }
+            { threshold: 0.35 }
         );
 
         const portfolioObserver = new IntersectionObserver(
@@ -590,7 +627,8 @@ With a passion for learning and exploring new technologies, I am determined to b
                             ))}
                         </div>
                     </motion.div>
-                    
+
+
                     <motion.div 
                         className={`fullstack-section ${isVisibleAbout ? 'visible' : ''}`}
                         initial={false}
@@ -616,175 +654,156 @@ With a passion for learning and exploring new technologies, I am determined to b
             </motion.section>
 
             <motion.section 
-                ref={portfolioRef} 
-                className={`portfolio-section ${isVisiblePortfolio ? 'visible' : ''}`} 
-                id="portfolio"
+    ref={portfolioRef} 
+    className={`portfolio-section ${isVisiblePortfolio ? 'visible' : ''}`} 
+    id="portfolio"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 1 }}
+>
+<script src="scroll-animation.js"></script>
+    <motion.h1
+        initial={{ y: -50, opacity: 0 }}
+        animate={isVisiblePortfolio ? { y: 0, opacity: 1 } : {}}
+        transition={{ duration: 0.8 }}
+    >
+        My Projects
+    </motion.h1>
+    <motion.div 
+        className="portfolio-grid"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isVisiblePortfolio ? "visible" : "hidden"}
+    >
+        {projects.map((project) => (
+            <motion.div 
+                key={project.id} 
+                className="portfolio-item"
+                variants={childVariants}
+                whileHover="hover"
+                onClick={() => setSelectedProject(project)}
+                style={{ 
+                    backgroundImage: `url(${project.image})`,
+                }}
+            >
+                <div className="portfolio-item-content">
+                    <motion.h2
+                        whileHover={{ color: '#FF5555' }}
+                    >
+                        {project.title}
+                    </motion.h2>
+                    <p>{project.description.substring(0, 80)}...</p>
+                    <motion.div className="tech-tags">
+                        {project.techStack.slice(0, 3).map((tech, index) => (
+                            <motion.span 
+                                key={index} 
+                                className="tech-tag"
+                                whileHover={{ scale: 1.1, backgroundColor: '#FF5555' }}
+                            >
+                                {tech}
+                            </motion.span>
+                        ))}
+                        {project.techStack.length > 3 && <span>+{project.techStack.length - 3}</span>}
+                    </motion.div>
+                </div>
+            </motion.div>
+        ))}
+    </motion.div>
+    
+    <AnimatePresence>
+        {selectedProject && (
+            <motion.div 
+                className="project-modal-overlay"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setSelectedProject(null)}
             >
-                <motion.h1
-                    initial={{ y: -50, opacity: 0 }}
-                    animate={isVisiblePortfolio ? { y: 0, opacity: 1 } : {}}
-                    transition={{ duration: 0.8 }}
-                >
-                    My Projects
-                </motion.h1>
                 <motion.div 
-                    className="portfolio-grid"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={isVisiblePortfolio ? "visible" : "hidden"}
+                    className="project-modal"
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: 50, opacity: 0 }}
+                    onClick={e => e.stopPropagation()}
                 >
-                    {projects.map((project) => (
-                        <motion.div 
-                            key={project.id} 
-                            className="portfolio-item"
-                            variants={childVariants}
-                            whileHover="hover"
-                            onClick={() => setSelectedProject(project)}
-                        >
-                            <motion.div className="project-image-container">
-                                <motion.div 
-                                    className="project-image-placeholder"
-                                    whileHover={{ 
-                                        filter: "brightness(1.2)",
-                                        boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.3)"
-                                    }}
-                                    style={{ 
-                                        backgroundColor: '#333', 
-                                        height: '150px', 
-                                        borderRadius: '8px',
-                                        marginBottom: '15px',
-                                        backgroundPosition: 'center',
-                                        backgroundSize: 'cover',
-                                    backgroundImage: `url(${project.image})`,
-                                    }}
-                                >
-                                    <motion.div 
-                                        className="view-project-overlay"
-                                        initial={{ opacity: 0 }}
-                                        whileHover={{ opacity: 1 }}
-                                    >
-                                        <span>View Details</span>
-                                    </motion.div>
-                                </motion.div>
-                            </motion.div>
-                            <motion.h2
-                                whileHover={{ color: '#FF5555' }}
-                            >
-                                {project.title}
-                            </motion.h2>
-                            <p>{project.description.substring(0, 100)}...</p>
-                            <motion.div className="tech-tags">
-                                {project.techStack.slice(0, 3).map((tech, index) => (
-                                    <motion.span 
-                                        key={index} 
-                                        className="tech-tag"
-                                        whileHover={{ scale: 1.1, backgroundColor: '#FF5555' }}
-                                    >
-                                        {tech}
-                                    </motion.span>
-                                ))}
-                                {project.techStack.length > 3 && <span>+{project.techStack.length - 3}</span>}
-                            </motion.div>
-                        </motion.div>
-                    ))}
-                </motion.div>
-                
-                <AnimatePresence>
-                    {selectedProject && (
-                        <motion.div 
-                            className="project-modal-overlay"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            onClick={() => setSelectedProject(null)}
-                        >
-                            <motion.div 
-                                className="project-modal"
-                                initial={{ y: 50, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                exit={{ y: 50, opacity: 0 }}
-                                onClick={e => e.stopPropagation()}
-                            >
-                                <motion.button 
-                                    className="close-modal"
-                                    onClick={() => setSelectedProject(null)}
-                                    whileHover={{ scale: 1.1, rotate: 90 }}
-                                >
-                                    ✕
-                                </motion.button>
-                                <div className="project-modal-content">
-                                    <div className="project-modal-header">
-                                        <h2>{selectedProject.title}</h2>
-                                    </div>
-                                    <div className="project-modal-body">
-                                        <div className="project-image-placeholder modal-image" style={{ backgroundColor: '#333', height: '250px', borderRadius: '8px ',
-                                         backgroundImage: `url(${projects.find(project => project.id === selectedProject.id).image})`, backgroundPosition: 
-                                         'center', backgroundSize:'cover',
-                                         }}></div>
-                                        <div className="project-details">
-                                            <p>{selectedProject.description}</p>
-                                            <div className="feature-list">
-                                                <h3>Key Features:</h3>
-                                                <ul>
-                                                    {selectedProject.features.map((feature, index) => (
-                                                        <motion.li 
-                                                            key={index}
-                                                            initial={{ opacity: 0, x: -20 }}
-                                                            animate={{ opacity: 1, x: 0 }}
-                                                            transition={{ delay: index * 0.1 }}
-                                                        >
-                                                            {feature}
-                                                        </motion.li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                            <div className="tech-stack">
-                                                <h3>Technologies Used:</h3>
-                                                <div className="tech-tags modal-tags">
-                                                    {selectedProject.techStack.map((tech, index) => (
-                                                        <motion.span 
-                                                            key={index} 
-                                                            className="tech-tag"
-                                                            initial={{ opacity: 0, scale: 0.8 }}
-                                                            animate={{ opacity: 1, scale: 1 }}
-                                                            transition={{ delay: index * 0.1 }}
-                                                            whileHover={{ scale: 1.1, backgroundColor: '#FF5555' }}
-                                                        >
-                                                            {tech}
-                                                        </motion.span>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="project-modal-footer">
-                                        <motion.a 
-                                            href={selectedProject.demoLink} 
-                                            className="project-link demo-link"
-                                            whileHover={{ scale: 1.05, backgroundColor: '#FF3333' }}
-                                            whileTap={{ scale: 0.95 }}
-                                        >
-                                            Live Demo
-                                        </motion.a>
-                                        <motion.a 
-                                            href={selectedProject.githubLink} 
-                                            className="project-link github-link"
-                                            whileHover={{ scale: 1.05, backgroundColor: '#333' }}
-                                            whileTap={{ scale: 0.95 }}
-                                        >
-                                            Source Code
-                                        </motion.a>
+                    <motion.button 
+                        className="close-modal"
+                        onClick={() => setSelectedProject(null)}
+                        whileHover={{ scale: 1.1, rotate: 90 }}
+                    >
+                        ✕
+                    </motion.button>
+                    <div className="project-modal-content">
+                        <div className="project-modal-header">
+                            <h2>{selectedProject.title}</h2>
+                        </div>
+                        <div className="project-modal-body">
+                            <div 
+                                className="modal-image" 
+                                style={{ 
+                                    backgroundImage: `url(${selectedProject.image})`,
+                                }}
+                            ></div>
+                            <div className="project-details">
+                                <p>{selectedProject.description}</p>
+                                <div className="feature-list">
+                                    <h3>Key Features:</h3>
+                                    <ul>
+                                        {selectedProject.features.map((feature, index) => (
+                                            <motion.li 
+                                                key={index}
+                                                initial={{ opacity: 0, x: -20 }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                transition={{ delay: index * 0.1 }}
+                                            >
+                                                {feature}
+                                            </motion.li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div className="tech-stack">
+                                    <h3>Technologies Used:</h3>
+                                    <div className="tech-tags modal-tags">
+                                        {selectedProject.techStack.map((tech, index) => (
+                                            <motion.span 
+                                                key={index} 
+                                                className="tech-tag"
+                                                initial={{ opacity: 0, scale: 0.8 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                transition={{ delay: index * 0.1 }}
+                                                whileHover={{ scale: 1.1, backgroundColor: '#FF5555' }}
+                                            >
+                                                {tech}
+                                            </motion.span>
+                                        ))}
                                     </div>
                                 </div>
-                            </motion.div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </motion.section>
-
+                            </div>
+                        </div>
+                        <div className="project-modal-footer">
+                            <motion.a 
+                                href={selectedProject.demoLink} 
+                                className="project-link demo-link"
+                                whileHover={{ scale: 1.05, backgroundColor: '#FF3333' }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                Live Demo
+                            </motion.a>
+                            <motion.a 
+                                href={selectedProject.githubLink} 
+                                className="project-link github-link"
+                                whileHover={{ scale: 1.05, backgroundColor: '#333' }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                Source Code
+                            </motion.a>
+                        </div>
+                    </div>
+                </motion.div>
+            </motion.div>
+        )}
+    </AnimatePresence>
+</motion.section>
             <motion.section 
           
       ref={ref}
