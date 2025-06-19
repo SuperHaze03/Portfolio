@@ -3,6 +3,8 @@ import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 import Background from "../components/Background";
 import { useInView } from 'react-intersection-observer';
 import emailjs from '@emailjs/browser';
+import RotatingText from './RotatingText'
+import ShinyText from './ShinyText';
 import './About.css';
 
 const About = () => {
@@ -489,14 +491,31 @@ const categories = [
                             variants={childVariants}
                             ref={ref} style={{ color: interpolateColor(scrollRatio) }}
                         >
-                            <motion.h3 
-                                className="about-subtitle-small"
-                                initial={{ x: -20, opacity: 0 }}
-                                animate={{ x: 0, opacity: 1 }}
-                                transition={{ delay: 0.2, duration: 0.5 }}
-                            >
-                                Hello, Welcome
-                            </motion.h3>
+                    <motion.div layout transition={{ duration: 0.4 }}
+                          className="header-about"
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '0.5rem',
+                            alignItems: 'flex-start'
+                          }}
+                        >
+                            <RotatingText
+                              texts={['Hello, Welcome', 'FullStack Developer']}
+                         mainClassName="text-black text-lg font-medium overflow-hidden transition-all duration-500"
+                              staggerFrom="last"
+                              initial={{ y: "120%" }}
+                              animate={{ y: 0 }}
+                              exit={{ y: "-135%" }}
+                              staggerDuration={0.025}
+                              splitLevelClassName="overflow-hidden"
+                              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                              rotationInterval={2000}
+                            />
+               
+                        </motion.div>
+
+                            
                             <motion.h3 
                                 className="about-subtitle"
                                 initial={{ x: -20, opacity: 0 }}
@@ -505,23 +524,35 @@ const categories = [
                             >
                                 I'm Glendly Raynaldy Kuma'at
                             </motion.h3>
-                            <motion.p 
-                                className="about-description scroll-change-color"
-                                initial={{ y: 20, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                transition={{ delay: 0.6, duration: 0.5 }}
-                                
+                            <motion.div 
+                              initial={{ y: 20, opacity: 0 }}
+                              animate={{ y: 0, opacity: 1 }}
+                              transition={{ delay: 0.6, duration: 0.5 }}
                             >
-                              I am a Junior Web Developer with a passion for building web applications. With a foundational understanding of both frontend and backend development, I am continuously learning and honing my skills to become a Full-Stack Developer. I believe that the combination of appealing design, solid business logic, and optimal system performance is the key to creating an exceptional user experience.
-                            </motion.p>
+                              <ShinyText
+                                text="I am a Junior Web Developer with a passion for building web applications. With a foundational understanding of both frontend and backend development, I am continuously learning and honing my skills to become a Full-Stack Developer. I believe that the combination of appealing design, solid business logic, and optimal system performance is the key to creating an exceptional user experience."
+                                disabled={false}
+                                speed={3}
+                                className="custom-class"
+                              />
+                            </motion.div>
+
                             <motion.p 
                                 className="about-description scroll-change-color"
                                 initial={{ y: 20, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: 0.8, duration: 0.5 }}
                             >
+
+<ShinyText
+                                text="
 With a passion for learning and exploring new technologies, I am determined to build innovative and high-quality web solutions. As a Junior Developer, I have studied the following programming languages:
-                            </motion.p>
+                          "
+                                disabled={false}
+                                speed={3}
+                                className="custom-class"
+                              />
+      </motion.p>
                             <motion.div 
                                 className="skills-section"
                                 variants={childVariants}
