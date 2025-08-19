@@ -673,10 +673,10 @@ With a passion for learning and exploring new technologies, I am determined to b
                             Menjadi Full-Stack Developer
                         </motion.h3>
                         <motion.p className="fullstack-description">
-                            Sebagai Full-Stack Developer, saya menguasai frontend dan backend, memungkinkan saya membangun aplikasi web yang efisien, responsif, dan terintegrasi.
+                            As a Full-Stack Developer, I master both frontend and backend, enabling me to build efficient, responsive, and integrated web applications.
                         </motion.p>
                         <motion.p className="fullstack-description">
-                            Saya tidak hanya fokus pada tampilan antarmuka, tetapi juga memastikan logika bisnis, performa database, dan keamanan sistem berjalan optimal. Dengan pemahaman menyeluruh, saya dapat menyelesaikan bug, mengoptimalkan fitur, dan berkolaborasi efektif dalam tim. Saya juga selalu beradaptasi dengan teknologi terbaru agar aplikasi yang saya bangun tetap inovatif dan kompetitif.
+                            I don't just focus on the user interface, but also ensure that business logic, database performance, and system security run optimally. With comprehensive understanding, I can fix bugs, optimize features, and collaborate effectively in teams. I also constantly adapt to the latest technologies to keep the applications I build innovative and competitive.
                         </motion.p>
                     </motion.div>
 

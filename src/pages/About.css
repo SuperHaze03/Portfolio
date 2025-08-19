@@ -433,7 +433,7 @@ html {
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 200px);
+  grid-template-rows: repeat(3, 200px); 
   gap: 15px;
   max-width: 1200px;
   margin: 40px auto;
@@ -460,17 +460,14 @@ html {
 @media (max-width: 640px) {
   .portfolio-grid {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(9, 160px);
+    grid-template-rows: repeat(6, 160px);
     grid-template-areas: 
       "item1"
       "item2"
       "item3"
       "item4"
       "item5"
-      "item6"
-      "item7"
-      "item8"
-      "item9";
+      "item6";
   }
 }
 
@@ -481,9 +478,7 @@ html {
 .portfolio-item:nth-child(4) { grid-area: item4; }
 .portfolio-item:nth-child(5) { grid-area: item5; }
 .portfolio-item:nth-child(6) { grid-area: item6; }
-.portfolio-item:nth-child(7) { grid-area: item7; }
-.portfolio-item:nth-child(8) { grid-area: item8; }
-.portfolio-item:nth-child(9) { grid-area: item9; }
+
 
 .portfolio-item {
   position: relative;
@@ -1282,7 +1277,12 @@ input::placeholder, textarea::placeholder {
     width: 82%;
   }
 .portfolio-grid{
-  grid-template-columns: repeat(2, 1fr); /* 2 kolom di layar kecil */
+  height: auto !important;
+  min-height: auto !important;
+  grid-template-columns: repeat(1, 1fr);
+   gap: 1rem !important;
+  padding: 1rem 0;
+   grid-auto-rows: auto;
 }
 
   .contact-section {
@@ -1447,3 +1447,5 @@ input::placeholder, textarea::placeholder {
   border-bottom: 2px solid rgba(255, 255, 255, 0.1);
   position: relative;
 }
+
+
