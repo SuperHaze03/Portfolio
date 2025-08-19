@@ -100,8 +100,19 @@
 
 /* mobile */
 @media (max-width: 480px) {
- 
+ .navbar{
+ font-size: 20px !important;
+
+ }
+ .logo {
+  font-size: 25px; /* kecilin logo */
+}
+.nav-links li{
+  font-size: 2px; /* kecilin semua link nav */
+}
+
     .navbar-glass {
-    width: 95% !important;
+    width: 85% !important;
+
   }
 }
