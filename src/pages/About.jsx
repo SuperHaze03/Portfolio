@@ -463,7 +463,7 @@ const categories = [
                         className={`about-header ${isVisibleAbout ? 'visible' : ''}`}
                         variants={childVariants}
                     >
-                        <h2 className="about-title">About Me</h2>
+                        <h2 className="about-title"></h2>
                     </motion.div>
                     <div className="about-content">
                         <motion.div 
