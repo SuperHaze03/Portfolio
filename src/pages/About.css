@@ -252,13 +252,14 @@ html {
 .fullstack-section {
   margin-top: 4rem;
   padding: 1.5rem;
-  background-color: #0A1045;
+  background-color: #E43636;
   border-radius: 0.5rem;
   box-shadow: 0 15px 25px -3px rgba(0, 0, 0, 0.3);
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.7s ease;
   transition-delay: 0.8s;
+  
 }
 
 .fullstack-section.visible {
@@ -270,11 +271,11 @@ html {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: #FF5555;
+  color: #000000;
 }
 
 .fullstack-description {
-  color: #CCCCCC;
+  color: #E2DDB4;
   margin-bottom: 1rem;
   line-height: 1.6;
 }
@@ -424,7 +425,7 @@ html {
 /* Portfolio Section Styles - Enhanced Bento Grid */
 .portfolio-section {
   min-height: 100vh;
-  background-color: #0d112b;
+  background-color: #000000;
   color: white;
   padding: 4rem 1rem;
   text-align: center;

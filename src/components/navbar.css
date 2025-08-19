@@ -3,17 +3,23 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center; /* biar glass ketengah */
   z-index: 1000;
-  transition: all 0.3s ease;
+  padding: 10px 0;
+  background: transparent; /* biar ga nutup bg */
+    transition: padding 0.3s ease, background 0.3s ease;
+    
+}
+.navbar-glass {
+  width: 40% !important;
+
+  transition: width 0.3s ease, height 0.3s ease;
+  
 }
 
-.navbar.scrolled {
-  padding: 0.8rem 2rem;
-}
 
 .navbar-container {
-  margin-top: 20px;
   max-width: 900px;
   margin: 0 auto;
   display: flex;
@@ -23,13 +29,13 @@
   border: 2px solid white;
   border-radius: 50px;
   /* Efek Neon */
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Glow awal */
-  animation: neon-border 2s infinite alternate; /* Animasi berkedip */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  animation: neon-border 2s infinite alternate;
 }
 
 @keyframes neon-border {
   to {
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Glow lebih kuat */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
   }
 }
 
@@ -78,36 +84,24 @@
 .nav-links li a:hover::after {
   width: 100%;
 }
-
-/* Mobile Responsiveness */
+/* tablet */
 @media (max-width: 768px) {
-  .navbar {
-      padding: 1rem;
+  .navbar{
+
+     margin: 0 !important;
+    border-radius: 0 !important;
+ 
   }
 
-  .navbar.scrolled {
-      padding: 0.8rem 1rem;
-  }
-
-  .nav-links {
-      gap: 1.5rem;
-  }
-
-  .nav-links li a {
-      font-size: 0.9rem;
+    .navbar-glass {
+    width: 80% !important;
   }
 }
 
+/* mobile */
 @media (max-width: 480px) {
-  .logo {
-      font-size: 1.5rem;
-  }
-
-  .nav-links {
-      gap: 1rem;
-  }
-
-  .nav-links li a {
-      font-size: 0.8rem;
+ 
+    .navbar-glass {
+    width: 95% !important;
   }
 }

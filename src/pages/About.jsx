@@ -669,18 +669,21 @@ With a passion for learning and exploring new technologies, I am determined to b
                         <motion.h3 
                             className="fullstack-title"
                             whileHover={{ color: '#FF7777' }}
+                            align="center"
+                          
                         >
-                            Menjadi Full-Stack Developer
+                            Be A Full-Stack Developer
                         </motion.h3>
-                        <motion.p className="fullstack-description">
+                        <motion.p className="fullstack-description"
+                        align="center">
+
                             As a Full-Stack Developer, I master both frontend and backend, enabling me to build efficient, responsive, and integrated web applications.
                         </motion.p>
-                        <motion.p className="fullstack-description">
+                        <motion.p className="fullstack-description"
+                        align="center">
                             I don't just focus on the user interface, but also ensure that business logic, database performance, and system security run optimally. With comprehensive understanding, I can fix bugs, optimize features, and collaborate effectively in teams. I also constantly adapt to the latest technologies to keep the applications I build innovative and competitive.
                         </motion.p>
                     </motion.div>
-
-                  
                 </motion.div>
             </motion.section>
 
@@ -694,12 +697,30 @@ With a passion for learning and exploring new technologies, I am determined to b
 >
 <script src="scroll-animation.js"></script>
     <motion.h1
-        initial={{ y: -50, opacity: 0 }}
-        animate={isVisiblePortfolio ? { y: 0, opacity: 1 } : {}}
-        transition={{ duration: 0.8 }}
+      initial={{ y: -50, opacity: 0 }}
+      animate={isVisiblePortfolio ? { y: 0, opacity: 1 } : {}}
+      transition={{ duration: 0.8 }}
     >
-        My Projects
+      <ShinyText 
+        text="Featured Work" 
+        disabled={false} 
+        speed={3} 
+        className="custom-shiny" 
+      />
     </motion.h1>
+
+  <motion.h2
+  initial={{ y: -50, opacity: 0 }}
+  animate={isVisiblePortfolio ? { y: 0, opacity: 1 } : {}}
+  transition={{ duration: 0.8 }}
+>
+  <ShinyText 
+    text="Explore My Project" 
+    disabled={false} 
+    speed={3} 
+    className="custom-shiny" 
+  />
+</motion.h2>
     <motion.div 
         className="portfolio-grid"
         variants={containerVariants}
@@ -719,7 +740,7 @@ With a passion for learning and exploring new technologies, I am determined to b
             >
                 <div className="portfolio-item-content">
                     <motion.h2
-                        whileHover={{ color: '#FF5555' }}
+                        whileHover={{ color: '#E43636' }}
                     >
                         {project.title}
                     </motion.h2>
@@ -729,7 +750,7 @@ With a passion for learning and exploring new technologies, I am determined to b
                             <motion.span 
                                 key={index} 
                                 className="tech-tag"
-                                whileHover={{ scale: 1.1, backgroundColor: '#FF5555' }}
+                                whileHover={{ scale: 1.1, backgroundColor: '#E43636' }}
                             >
                                 {tech}
                             </motion.span>
