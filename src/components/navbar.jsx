@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import GlassSurface from './GlassSurface';
 import "./navbar.css";
-import "./glasssurface.css";
+
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
